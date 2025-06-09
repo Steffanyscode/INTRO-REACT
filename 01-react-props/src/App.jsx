@@ -47,7 +47,7 @@ function App() {
       </div>
     </section>
 
-    <Info title="Juntos podemos aprender" description="Somos DevF G40" />
+    <Info />
 
     <section className="cards contenedor">
       <h2 className="titulo">Our services</h2>
