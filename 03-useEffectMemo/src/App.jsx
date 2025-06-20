@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo} from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import './App.css'
 
 function App () {
@@ -53,6 +53,36 @@ function App () {
   }
   return (
     <>
+      <div style={estilo}>
+        <h2>Lista de Usuarios</h2>
+        <button onClick={() => setTema(tema === 'light' ? 'dark' : 'light')}>
+          Cambiar Tema ({tema === 'light' ? 'Oscuro' : 'Claro'})
+        </button>
+
+        <hr style={{ margin: '20px 0' }} />
+
+        <input
+          type='text'
+          placeholder='Buscar usuario...'
+          value={busqueda}
+          onChange={(event) => setBusqueda(event.target.value)}
+        />
+        {
+          cargando
+            ? (
+              <p>Cargando usuarios...</p>
+              )
+            : (
+              <ul>
+                {usuariosFiltrados.map((usuario) => (
+                  <li key={usuario.id}>
+                    <strong>{usuario.nombre}</strong> - {usuario.pais}
+                  </li>
+                ))}
+              </ul>
+              )
+        }
+      </div>
     </>
   )
 }
