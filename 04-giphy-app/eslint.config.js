@@ -7,7 +7,6 @@ import neostandard from 'neostandard'
 
 export default [
   ...neostandard(),
-  
   { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
