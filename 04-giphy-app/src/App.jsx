@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import ImageCard from './components/imageCard'
+
 import './App.css'
 
 function App() {
@@ -9,7 +11,7 @@ function App() {
         const fetchGifs = async () => {
             try {
                 const response = await fetch(
-                    `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=20&offset=0&rating=g&bun dle=messaging_non_clips`
+                    `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=20&offset=0&rating=g&bundle=messaging_non_clips`
                 )
                 const results = await response.json()
                 setGifs(results.data)
@@ -23,9 +25,9 @@ function App() {
 
     return (
         <>
-            <h1>Giphy App</h1>
+          <h1>Giphy App</h1>
         </>
-    )
-}
+      )
+    }
 
 export default App
