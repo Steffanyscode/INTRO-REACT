@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ImageCard from './components/imageCard'
-
 import './App.css'
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
     const apiKey = import.meta.env.VITE_GIPHY_API_KEY
 
     useEffect(() => {
-        const fetchGifs = async () => {
+        const fetchGifs = async ()  => {
             try {
                 const response = await fetch(
                     `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=20&offset=0&rating=g&bundle=messaging_non_clips`
@@ -19,15 +18,26 @@ function App() {
                 console.error('Error fetching GIFs:', error)
             }
         }
-
         fetchGifs()
     }, [])
 
     return (
-        <>
-          <h1>Giphy App</h1>
-        </>
-      )
-    }
+      <>
+      <div className='App'>
+        <div className='grid-cards'>
+          {
+            gifs.map(gif => (
+              <ImageCard
+                key={gif.id}
+                url={gif.images.fixed_height.url}
+                title={gif.title || 'Untitled GIF'}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </>
+  )
+}
 
 export default App
